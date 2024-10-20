@@ -50,6 +50,7 @@ in this case each `package.json` file is named after the microservice it belongs
 -------------------------------------
 # ssh and run commands on server
 In this example, the web server is located in an AWS private subnet. To access it, we must first SSH into the jump server, which resides in the public subnet within the same VPC. After connecting to the jump server, SSH access to the web server can be established.
+
 ![diagram1](https://github.com/marwantarek01/assets/blob/main/rev-proxy-arh.png)
 
 
@@ -77,6 +78,7 @@ jobs:
    # ssh to the web-server
   EOF
   ```
-- after that ssh to the web-server using the command `ssh -i server.pem ec2-user@web-server_IP`, **note that* In this step, you cannot use the secrets defined in GitHub Secrets because the process does not run on a GitHub runner. Instead, it runs on the jump server, which has no connection with GitHub Actions secrets.For sensitive information such as usernames and IP addresses, you can set environment variables directly on the jump server and use them.
+- after that ssh to the web-server using the command `ssh -i server.pem ec2-user@web-server_IP`, **note that** In this step, you cannot use the secrets defined in GitHub Secrets because the process does not run on a GitHub runner. Instead, it runs on the jump server, which has no connection with GitHub Actions secrets.
+For sensitive information such as usernames and IP addresses, you can set environment variables directly on the jump server and use them.
 - double quotes "" is used to encapsulate a series of commands that will be executed on the remote server after the SSH connection is established. 
 
