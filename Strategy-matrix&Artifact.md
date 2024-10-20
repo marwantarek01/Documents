@@ -46,3 +46,28 @@ using artifact upload action to save `package.json` files
 in this case each `package.json` file is named after the microservice it belongs to
 
 ![artifacts](https://github.com/marwantarek01/assets/blob/main/ss%20of%20artifacts.png)
+
+-------------------------------------
+# ssh to server and run commands
+![artifacts](https://github.com/marwantarek01/assets/blob/main/ss%20of%20artifacts.png)
+
+```
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ssh to jump-server
+        env:
+          PRIVATE_KEY: ${{secrets.JUMP_SERVER_PRIVATE_KEY}}
+          WEB_SERVER_PRIVATE_KEY: ${{secrets.WEB_SERVER_PRIVATE_KEY}}
+          USER_NAME: ${{secrets.USER_NAME}}
+          JUMP_SERVER_IP: ${{secrets.JUMP_SERVER_IP}}
+        run: |
+         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key     #writes private key in file named private_key inside githubactions runner
+         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${JUMP_SERVER_IP} << EOF
+           ssh -i server.pem ec2-user@10.0.133.102 << '
+             ls
+         '  
+         EOF
+```
+
