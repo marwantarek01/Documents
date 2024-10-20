@@ -48,8 +48,10 @@ in this case each `package.json` file is named after the microservice it belongs
 ![artifacts](https://github.com/marwantarek01/assets/blob/main/ss%20of%20artifacts.png)
 
 -------------------------------------
-# ssh to server and run commands
-![artifacts](https://github.com/marwantarek01/assets/blob/main/ss%20of%20artifacts.png)
+# ssh and run commands on server
+In this example, the web server is located in an AWS private subnet. To access it, we must first SSH into the jump server, which resides in the public subnet within the same VPC. After connecting to the jump server, SSH access to the web server can be established.
+![diagram1](https://github.com/marwantarek01/assets/blob/main/rev-proxy-arh.png)
+
 
 ```
 jobs:
@@ -63,11 +65,18 @@ jobs:
           USER_NAME: ${{secrets.USER_NAME}}
           JUMP_SERVER_IP: ${{secrets.JUMP_SERVER_IP}}
         run: |
-         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key     #writes private key in file named private_key inside githubactions runner
+         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key     
          ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${JUMP_SERVER_IP} << EOF
-           ssh -i server.pem ec2-user@10.0.133.102 << '
-             ls
-         '  
+                      ssh -T -i server.pem ec2-user@web-server-IP "cd pipeline2 && docker-compose down && docker-compose pull"
          EOF
 ```
+- `echo "$PRIVATE_KEY" > private_key && chmod 600 private_key` prints the value of `PRIVATE_KEY` (jump-server private key) in the file named `private_key` inside githubActions runner. Afterthat, githubActions runner use this file to ssh to the jump-server.
+- The `EOF` marker is used to pass multiple commands as input to an SSH command. in this example ssh command is used again to ssh to the web-server. note that any marker can be used not just EOF
+  ```
+  ssh -o ... << EOF
+   # ssh to the web-server
+  EOF
+  ```
+- after that ssh to the web-server using the command `ssh -i server.pem ec2-user@web-server_IP`, **note that* In this step, you cannot use the secrets defined in GitHub Secrets because the process does not run on a GitHub runner. Instead, it runs on the jump server, which has no connection with GitHub Actions secrets.For sensitive information such as usernames and IP addresses, you can set environment variables directly on the jump server and use them.
+- double quotes "" is used to encapsulate a series of commands that will be executed on the remote server after the SSH connection is established. 
 
