@@ -1,6 +1,6 @@
 # Clean up unused Docker objects automatically 
 ##  Edit the Crontab
-- run `crontab -e` 
+- run `crontab -e` to open the crontab file for editing
 - add the command `0 0 * * * /usr/bin/docker system prune -f >> /var/log/docker-prune.log 2>&1` 
 
 
