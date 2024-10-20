@@ -2,12 +2,12 @@
 ##  Edit the Crontab
 - run `crontab -e` 
 - add the command `0 0 * * * /usr/bin/docker system prune -f >> /var/log/docker-prune.log 2>&1` 
-- The command is a cron job that schedules a task to automatically run at a specific time.
-----------------------------------------
+
 
 ## command explanation 
 The command is a cron job that schedules a task to automatically run at a specific time.
-### Timing 
+----------------------------------------
+## Timing 
 
  `(0 0 * * *)` defines when the command should run:
 
@@ -19,11 +19,11 @@ The command is a cron job that schedules a task to automatically run at a specif
 ##### this means that the job will run every day at midnight.
 
 
-### Clean up unused Docker objects
+## Clean up unused Docker objects
 - `/usr/bin/docker` This is the full path to the Docker executable.
 - `system prune` This Docker command removes unused data, including stopped containers, dangling images, unused networks, and unused volumes.
 - `-f` (force flag): This option forces the prune operation without prompting for confirmation.
-### Logging Output: >> /var/log/docker-prune.log 2>&1
+## Logging Output: >> /var/log/docker-prune.log 2>&1
 - `>> /var/log/docker-prune.log` This appends the output of the command (both standard output and errors) to the file /var/log/docker-prune.log.
 
 - `2>&1` This redirects error output (stderr) to the same place as the standard output (stdout). This ensures that both regular output and errors go into the same log file.
