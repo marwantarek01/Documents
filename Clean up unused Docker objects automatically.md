@@ -1,12 +1,10 @@
 # Clean up unused Docker objects automatically 
+This document explains how to automatically clean up unused Docker objects(such as: images, containers...) on linux server 
 ##  Edit the Crontab
 - run `crontab -e` to open the crontab file for editing
 - add the command `0 0 * * * /usr/bin/docker system prune -f >> /var/log/docker-prune.log 2>&1` 
+##### The command is a cron job that schedules a task to automatically run at a specific time. here is a detailed explanation for it.
 
-
-## command explanation 
-The command is a cron job that schedules a task to automatically run at a specific time.
-----------------------------------------
 ## Timing 
 
  `(0 0 * * *)` defines when the command should run:
