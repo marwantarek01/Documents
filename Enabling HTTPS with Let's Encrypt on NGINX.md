@@ -1,4 +1,5 @@
 # Enabling HTTPS with Let's Encrypt on NGINX
+This report provides a step-by-step guide to enabling HTTPS on an NGINX web server using Let's Encrypt, a free and automated Certificate Authority. It covers the process of obtaining an SSL/TLS certificate, configuring NGINX to use the certificate, and ensuring secure communication for your web application.
 
 ## 1. Install Certbot on the NGINX Server
 Log in to the server running NGINX (the reverse proxy server).
