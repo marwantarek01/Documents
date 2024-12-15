@@ -39,7 +39,7 @@ server {
 sudo nginx -t
 sudo systemctl reload nginx
 ```
-## 4. Obtain a Certificat
+## 4. Obtain a Certificate
 Run the Certbot command (Certbot sends a request to Let's Encrypt to issue an SSL certificate for `your-domain.com`):
 ```
 sudo certbot --nginx -d your-domain.com
