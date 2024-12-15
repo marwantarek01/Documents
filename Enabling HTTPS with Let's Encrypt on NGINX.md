@@ -34,7 +34,7 @@ server {
     }
 }
 ```
-- *Note that* ` server_name` **must** be the domain name. if the ip-address is entered instead, CertBot will be unable to automatically configure your NGINX server to use the new certificate because it will not find a matching `server_name` block for the domain name in the NGINX configuration.
+- *Note that* ` server_name` **must** be the domain name. if the ip-address is entered instead, CertBot will be unable to automatically configure your NGINX server to use the new certificate, because it will not find a matching `server_name` block for the domain name in the NGINX configuration.
 - Test the configuration:
 ```
 sudo nginx -t
