@@ -85,7 +85,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 ## 6. Test HTTPS
-Access `https://your-domain.com` in thw browser and confirm that HTTPS is working.
+Access `https://your-domain.com` in the browser and confirm that HTTPS is working.
 
 ## 7. Set Up Auto-Renewal
 Let's Encrypt certificates expire every 90 days. To ensure the certificate renews automatically:
