@@ -33,7 +33,7 @@ server {
     }
 }
 ```
-- note that ` server_name` **must** be the domain name. if the ip-address is entered instead, CertBot will be unable to automatically configure your NGINX server to use the new certificate because it will not find a matching `server_name` block for the domain name in the NGINX configuration.
+- *Note that* ` server_name` **must** be the domain name. if the ip-address is entered instead, CertBot will be unable to automatically configure your NGINX server to use the new certificate because it will not find a matching `server_name` block for the domain name in the NGINX configuration.
 - Test the configuration:
 ```
 sudo nginx -t
@@ -45,7 +45,7 @@ Run the Certbot command (Certbot sends a request to Let's Encrypt to issue an SS
 sudo certbot --nginx -d your-domain.com
 ```
 ### What Happens During This Step:
-- **Let's Encrypt Issues a Challenge:** Let's Encrypt responds with a challenge, asking Certbot to prove ownership of your-domain.com. This involves serving a temporary file with a unique token
+- **Let's Encrypt Issues a Challenge:** Let's Encrypt responds with a challenge, asking Certbot to prove ownership of y`our-domain.com` This involves serving a temporary file with a unique token
 - **Certbot Configures NGINX:** Certbot temporarily updates your NGINX configuration to handle this challenge. It serves the unique token file at the required URL
 - **Let's Encrypt Validates the Token:** Let's Encrypt makes an HTTP request to the URL and checks whether the server returns the correct token
 - **Certificate is Issued** If the token is correctly served, Let's Encrypt issues the SSL certificate.
