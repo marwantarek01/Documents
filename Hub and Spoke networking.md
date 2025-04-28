@@ -31,7 +31,7 @@ In the following section, a detailed explanation is provided for the route table
     | var.public-sn| CIDR_BLOCK  | firewall_id       | Route traffic with **public-sn** destination to the firewall      |
     |var.private-sn| CIDR_BLOCK  | firewall_id       | Route traffic with **private-sn** destination to the firewall     |
 
-- `network_entity_id` in Terraform defines the **target** resource  that traffic should be routed to.
+   `network_entity_id` in Terraform defines the **target** resource  that traffic should be routed to.
 In the OCI Console, this corresponds to the target ip address.
 ### Hub VCN subnets route tables
   To handle intercommunication between subnets within the Hub VCN, we need to override the default routing behavior (where subnets in the same VCN communicate directly with each other). This can be achieved by configuring the route tables to forward all traffic to the firewall subnet. After the firewall inspects the traffic, it will route it to the original destination subnet. 
@@ -126,7 +126,7 @@ The main components and configuration details of DRG Attachments will be explain
  
  
 ### DRG Spoke attachment Configuration
-1. For the Spoke VCNs, DRG route table is created, intended to forward traffic entering the DRG from Spoke VCN toward the firewall subnet in the Hub VCN, this can be acheived by defining `Import Route Distribution` with a `Route Distribution Statement` that explicitly accepts routes from the **Hub-Attachment**. 
+ For the Spoke VCNs, DRG route table is created, intended to forward traffic entering the DRG from Spoke VCN toward the firewall subnet in the Hub VCN, this can be acheived by defining `Import Route Distribution` with a `Route Distribution Statement` that explicitly accepts routes from the **Hub-Attachment**. 
    
    This setup ensures that the Spoke VCN's DRG attachment can only learn and import routes propagated from the Hub attachment, enforcing trrafic forwarding to the network firewall through the hub-attachment.
     #### DRG Spoke attachment Route table
