@@ -130,8 +130,8 @@ The main components and configuration details of DRG Attachments will be explain
  For the Spoke VCNs, DRG route table is created, intended to forward traffic entering the DRG from Spoke VCN toward the firewall subnet in the Hub VCN, this can be acheived by defining `Import Route Distribution` with a `Route Distribution Statement` that explicitly accepts routes from the **Hub-Attachment**. 
    
    This setup ensures that the Spoke VCN's DRG attachment can only learn and import routes propagated from the Hub attachment, enforcing trrafic forwarding to the network firewall through the hub-attachment.
-    #### DRG Spoke attachment Route table
-    | Destination    | Target Type | Next hop attachment name   | Description                   |
+   #### DRG Spoke attachment Route table
+   | Destination    | Target Type | Next hop attachment name   | Description                   |
     |----------------|-------------|----------------------------|-------------------------------|
     | 0.0.0.0/0      | CIDR_BLOCK  |  hub-attachment             | Route traffic to the hub vcn |
     |`hub-vcn cidr`  | CIDR_BLOCK  |  hub-attachment             | Route traffic to the hub vcn |
