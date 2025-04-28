@@ -47,7 +47,7 @@ In the OCI Console, this corresponds to the target ip address.
     | var.public-sn    | CIDR_BLOCK  | firewall_id       | Route traffic with **public-sn** destination to the firewall  |
     | var.private-sn   | CIDR_BLOCK  | firewall_id       | Route traffic with **private-sn** destination to the firewall |
 
-- Variables like `var.public-sn` is used instead of hardcoding the CIDR blocks of subnets in the Terraform files.
+   Variables like `var.public-sn` is used instead of hardcoding the CIDR blocks of subnets in the Terraform files.
 
 
 ### Firewall subnet route table
