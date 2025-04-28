@@ -1,6 +1,7 @@
 # Hub and Spoke networking documentation
 
 The Hub-and-Spoke architecture is a network design model where a central Hub VCN connects to multiple Spoke VCNs through a Dynamic Routing Gateway (DRG). In this document it is used to route traffic from Spoke VCNs through a centralized network firewall deployed in the Hub. By forwarding traffic through the Hub, organizations can enforce consistent security policies, perform deep packet inspection, and centralize traffic monitoring. 
+
 ![network architecture](https://github.com/marwantarek01/assets/blob/main/Network%20Architecture%201.png)
 ## Table of Contents  
 
