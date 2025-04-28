@@ -131,10 +131,10 @@ The main components and configuration details of DRG Attachments will be explain
    
    This setup ensures that the Spoke VCN's DRG attachment can only learn and import routes propagated from the Hub attachment, enforcing trrafic forwarding to the network firewall through the hub-attachment.
     #### DRG Spoke attachment Route table
-    | Destination    | Target Type | Next hop attachment name   | Description                  |
+    | Destination    | Target Type | Next hop attachment name   | Description                   |
     |----------------|-------------|----------------------------|-------------------------------|
-    | 0.0.0.0/0      | CIDR_BLOCK  |  hub-attachment            | Route traffic to the hub vcn    |
-    |`hub-vcn cidr` | CIDR_BLOCK  |  hub-attachment            | Route traffic to the hub vcn |
+    | 0.0.0.0/0      | CIDR_BLOCK  |  hub-attachment             | Route traffic to the hub vcn |
+    |`hub-vcn cidr`  | CIDR_BLOCK  |  hub-attachment             | Route traffic to the hub vcn |
 
 
 
